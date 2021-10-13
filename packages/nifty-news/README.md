@@ -1,24 +1,35 @@
-# Basic Profile DataModel
+# NiFTy News DataModel
 
-DataModel implementation of the **Basic Profile** schema and definition specified in [CIP-19](https://github.com/ceramicnetwork/CIP/blob/main/CIPs/CIP-19/CIP-19.md).
+DataModel implementation of the **NiFTy News** schema and definition specified here).
 
 ## Installation
 
 ```sh
-npm install -D @datamodels/identity-profile-basic
+npm install -D @datamodels/nifty-news
 ```
 
 ## Rationale
 
-The **Basic Profile** contains a DID's basic profile information.
+The **NiFTy News** contains a News or Blogs's basic information designed around sustainability, confidentiality, and simplicity of asserting accuracy through the ability to attach IPFS data for use in NFT creation. Leveraging the schema.org/Events space simplifies the process, however we use it aware of the limitations in its current design.
 
-By standardizing profile information for DIDs, the Basic Profile simplifies how applications can view and display the profiles of their users.
+https://www.foam.space/ is planned for integration in geospatially organizing this product
 
-**A profile is one of the most important aspects to identity**: Profiles are often most associated with identity, and the Basic Profile serves as the standard profile for a DID that can be used everywhere across the web.
+by building the product with BrightID compatibility we'll have a process for connecting content without risk of associating names or other biometric data that might compromise the safety of the news person
 
-**DID-agnostic support:** Since Ceramic documents can be created and controlled by any DID, the Basic Profile can be used in conjunction with any DID method.
+**Where and when things happen is the foundation stone of news**: The NiFTy News schema attempts to provide a reduced approach to the schema.org standard that, while inclusive and expansive, should probably be accorded a broader meta-data standard to then include mediawiki or other standard development products specific to the niche ecosystem.  and the whole damn thing should be done with silly little widgets  
+
+
 
 ## Schemas
+about | description field
+location | wgs84 - pull from foam.space later, use peermaps.org for pinning?
+location name | str
+BrightID | uids
+inLanguage | 
+startDate | iso 8601
+endDate | iso 8601
+media | for NFT process
+
 
 ### [BasicProfile](./schemas/BasicProfile.json)
 
