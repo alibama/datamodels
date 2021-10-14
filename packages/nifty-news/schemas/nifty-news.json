@@ -27,30 +27,16 @@
       "type": "string",
       "maxLength": 42
     },
-    "homeLocation": {
+    "inLanguage": {
       "type": "string",
-      "maxLength": 140
+      "pattern": "^[A-Z]{2}$-^[A-Z]{2}$",
+      "maxLength": 5
     },
-    "residenceCountry": {
-      "type": "string",
-      "pattern": "^[A-Z]{2}$",
-      "maxLength": 2
+    "media": {
+      "$ref": "#/definitions/IPFSUrl"
     },
-    "nationalities": {
-      "type": "array",
-      "minItems": 1,
-      "items": {
-        "type": "string",
-        "pattern": "^[A-Z]{2}$",
-        "maxItems": 5
-      }
-    },
-    "affiliations": {
-      "type": "array",
-      "items": {
-        "type": "string",
-        "maxLength": 140
-      }
+    "additionalType":{
+      "$ref": "#/definitions/IPFSUrl"
     }
   },
   "definitions": {
