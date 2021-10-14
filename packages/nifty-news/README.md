@@ -1,6 +1,6 @@
 # NiFTy News DataModel
 
-DataModel implementation of the **NiFTy News** schema and definition specified here).
+DataModel implementation of the **NiFTy News** schema and definition specified here and inspired by https://schema.org/Event .
 
 ## Installation
 
@@ -10,47 +10,55 @@ npm install -D @datamodels/nifty-news
 
 ## Rationale
 
-The **NiFTy News** contains a News or Blogs's basic information designed around sustainability, confidentiality, and simplicity of asserting accuracy through the ability to attach IPFS data for use in NFT creation. Leveraging the schema.org/Events space simplifies the process, however we use it aware of the limitations in its current design.
+The **NiFTy News** contains a News or Blogs's basic information designed around sustainability, confidentiality, and simplicity of asserting accuracy through the ability to attach IPFS data for use in NFT creation. Leveraging the schema.org/Events space simplifies the process, however we use it aware of the limitations in its current design, as well as the opportunities to simplify this process using Ceramic's off-the-shelf features.
 
-https://www.foam.space/ is planned for integration in geospatially organizing this product
+https://www.brightID.org is planned for integration in safely anonymizing the content with proving some anti-sybil security
+https://www.foam.space/ is planned for integration in geospatially organizing this content
 
 by building the product with BrightID compatibility we'll have a process for connecting content without risk of associating names or other biometric data that might compromise the safety of the news person
 
-**Where and when things happen is the foundation stone of news**: The NiFTy News schema attempts to provide a reduced approach to the schema.org standard that, while inclusive and expansive, should probably be accorded a broader meta-data standard to then include mediawiki or other standard development products specific to the niche ecosystem.  and the whole damn thing should be done with silly little widgets  
+Ceramic also obviates some of the products in the schema.org profile. For instance the translator field - an integral asset tag for multi-language products - may be stored in the ceramic tile as the NiFTy News object is updated
+
+**More provably first-hand accounts helps raise the bar in journalistic integrity.**: Obtaining accurate news from areas of conflict is difficult for many reasons. NiFTy News attempts to provide more equitable compensation, improved personal security, and more tamper-proof tools for people in many fields who may be familiar with these challenges.  
 
 
 
-## Schemas
-about | description field
-location | wgs84 - pull from foam.space later, use peermaps.org for pinning?
-location name | str
-BrightID | uids
-inLanguage | 
-startDate | iso 8601
-endDate | iso 8601
-media | for NFT process
 
 
-### [BasicProfile](./schemas/BasicProfile.json)
+## Schema
+* description | description field
+* image | a thumbnail image field
+* location | wgs84 - pull from foam.space later, use peermaps.org for pinning? 
+* startDate | iso 8601
+* endDate | iso 8601
+* BrightID | weighted DID reference
+* inLanguage |  IETF BCP 47 standard (EN-US vs EN-GB parsible)
+* media | IPFS 
+* additionalType | an optional linked data space
 
-The Basic Profile schema defines the format of a document that contains the properties listed below. Properties not defined in the schema _cannot_ be included in the Basic Profile, however the schema can always be updated via a new CIP.
+
+### [NiFTy News](./schemas/nifty-news.json)
+
+The NiFTy News schema defines the format of a document that contains the properties listed below. Properties not defined in the schema _cannot_ be included in the Basic Profile, however the schema can always be updated via a new CIP.
 
 | Property           | Description                    | Value                                                                                  | Max Size | Required | Example                      |
 | ------------------ | ------------------------------ | -------------------------------------------------------------------------------------- | -------- | -------- | ---------------------------- |
-| `name`             | a name                         | string                                                                                 | 150 char | optional | Mary Smith                   |
-| `image`            | an image                       | Image sources                                                                          |          | optional |                              |
-| `description`      | a short description            | string                                                                                 | 420 char | optional | This is my cool description. |
-| `emoji`            | an emoji                       | unicode                                                                                | 2 char   | optional | 🔢                           |
-| `background`       | a background image (3:1 ratio) | Image sources                                                                          |          | optional |                              |
-| `birthDate`        | a date of birth                | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)                                     | 10 char  | optional | 1990-04-24                   |
-| `url`              | a url                          | string                                                                                 | 240 char | optional | http://ceramic.network       |
-| `gender`           | a gender                       | string                                                                                 | 42 char  | optional | female                       |
-| `homeLocation`     | a place of residence           | string                                                                                 | 140 char | optional | Berlin                       |
-| `residenceCountry` | a country of residence         | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)                 | 2 char   | optional | DE                           |
-| `nationalities`    | nationalities                  | array of [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) values | 2 char   | optional | CN                           |
-| `affiliations`     | affiliations                   | array of strings                                                                       | 240 char | optional | Ceramic Ecosystem Alliance   |
+| `description`             | what's going on                         | string                                                                                 | 420 char | optional | There's something strange, in the neighborhood                   |
+| `image`            | an image for the thumbnail                      | Image a tuhmbnail image                                                                          |          | optional |                              |
+| `location`            | WGS 84 ideally pulled from https://www.foam.space/                   | unicode                                                                                | 2 char   | optional | 
+| `startDate`        | a date and time of things starting                | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)                                     | 24 char  | optional | 2007-04-05T14:30                  |
+| `endDate`        | a date and time of things ending                | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)                                     | 24 char  | optional | 2007-04-05T14:30                  |string                                                                                 | 240 char | optional | http://ceramic.network       |
+| `inLanguage`           | language being used - conform to IETF BCP 47 standard and reduce to two char hyphen two char format                       | string                                                                                 | 5 char  | optional | en-en                       |
+| `BrightID`     | a reference to the BrightID identifier           | string                                                                                 | 140 char | optional                        |
+| `media` | associated media        |  ipfs file    | 100MB?   | optional | big file                           |
+| `additionalType` | optional extension tool        |  CID Schema reference    | ???   | optional | additional reference file to simplify upgrades
 
-## [Discussion](https://github.com/ceramicstudio/datamodels/discussions/10)
+
+## [Discussion](https://github.com/ceramicstudio/datamodels/discussions/25)
+
+## [Apologies]
+
+The NiFTy News schema attempts to provide a reduced approach to the schema.org standard that, while inclusive and expansive, should probably be accorded a broader meta-data standard to then include mediawiki or other standard development products specific to the niche ecosystem.  and the whole damn thing should be done with silly little widgets.  
 
 ## License
 

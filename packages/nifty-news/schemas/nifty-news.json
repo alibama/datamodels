@@ -1,29 +1,29 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "NiftyNews",
+  "title": "NiFTyNews",
   "type": "object",
   "properties": {
-    "name": {
-      "type": "string",
-      "maxLength": 150
-    },
-    "image": {
-      "$ref": "#/definitions/imageSources"
-    },
     "description": {
       "type": "string",
       "maxLength": 420
     },
+    "image": {
+      "$ref": "#/definitions/imageSources"
+    },
+    "location": {
+      "$ref": "#/definitions/locations"
+    },
     "startDate": {
       "type": "string",
       "format": "date",
-      "maxLength": 10
+      "maxLength": 20
     },
-    "url": {
+    "endDate": {
       "type": "string",
-      "maxLength": 240
+      "format": "date",
+      "maxLength": 20
     },
-    "gender": {
+    "brightid": {
       "type": "string",
       "maxLength": 42
     },
@@ -99,6 +99,23 @@
         }
       },
       "required": ["original"]
+    },
+    "locations": {
+      "type": "object",
+      "properties": {
+        "FOAMURL": {
+          "$ref": "#/definitions/IPFSUrl"
+          }
+          }
+      },
+    "brightid": {
+      "type": "object",
+        "properties": {
+          "DID": {
+            "type": "string",
+            "maxLength": 140
+            }
+
     }
   }
 }
